@@ -16,4 +16,9 @@ with st.expander("Data"):
   
   st.write("**y**")
   y = df.species
+  y
   
+with st.expander("Data visualisation"):
+  st.scatter_chart(
+    
+  )
