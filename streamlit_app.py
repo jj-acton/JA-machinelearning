@@ -25,3 +25,10 @@ with st.expander("Data visualisation"):
     y="body_mass_g",
     color="species"
   )
+
+#data prep
+with st.sidebar():
+  st.header("Input Features")
+  island = st.selectbox("Island", ("Biscoe", "Dream", "Torgerson"))
+  gender = st.selectbox("Gender", ("male", "female"))
+  bill_length_mm = st.slider("Bill length (mm)", 32.1, 59.6, 43.9)
