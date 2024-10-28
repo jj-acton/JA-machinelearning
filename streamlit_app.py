@@ -1,22 +1,22 @@
 import streamlit as st
 import pandas as pd 
 
-st.title('⚙️ Machine Learning App')
+st.title('⚙️ Machine Learning Penguin App')
 
-st.info('This app builds a machine learning model!')
+st.info('This app builds a machine learning model for data on penguins!')
 
 with st.expander("Data"):
   st.write("**Raw Data**")
   df = pd.read_csv('https://raw.githubusercontent.com/dataprofessor/data/refs/heads/master/penguins_cleaned.csv')
   df
 
-  st.write("**X**")
-  X = df.drop("species", axis = 1)
-  X
+  st.write("**x-axis data**")
+  x_raw = df.drop("species", axis = 1)
+  x_raw
   
-  st.write("**y**")
-  y = df.species
-  y
+  st.write("**y-axis data**")
+  y_raw = df.species
+  y_raw
   
 with st.expander("Data visualisation"):
   st.scatter_chart(
@@ -26,7 +26,7 @@ with st.expander("Data visualisation"):
     color="species"
   )
 
-#data prep
+
 with st.sidebar:
   st.header("Input Features")
   island = st.selectbox("Island", ("Biscoe", "Dream", "Torgerson"))
@@ -45,7 +45,7 @@ data = {"island": island,
         "sex": gender,
 }
 input_df = pd.DataFrame(data, index=[0])
-input_penguins = pd.concat([input_df, X], axis = 0)
+input_penguins = pd.concat([input_df, x_raw], axis = 0)
 
 with st.expander("Input features"):
   st.write("**Input Penguin**")
@@ -53,7 +53,23 @@ with st.expander("Input features"):
   st.write("**Combined Penguin Data**")
   input_penguins
   
-#Encode the data
+#Data prep
+#Encode X-axis
 encode = ["island", "sex"]
 df_penguins = pd.get_dummies(input_penguins, prefix=encode)
-df_penguins[:1]
+input_row = df_penguins[:1]
+
+#Encode Y-axis
+target_mapper = {"Adelie": 0, "Chinstrap": 1, "Gentoo": 2}
+
+def target_encode(val):
+  return target_mapper[val]
+
+y = y_raw.apply(target_encode)
+  
+
+with st.expander("Data preparation"):
+  st.write("**Encoded X (input penguin)**")
+  input_row
+  st.write("**Encoded y**")
+  y
