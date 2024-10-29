@@ -91,9 +91,8 @@ df_prediction_probability = pd.DataFrame(prediction_probability)
 df_prediction_probability.columns = ["Adelie", "Chinstrap", "Gentoo"]
 df_prediction_probability.rename(columns={0: "Adelie", 1: "Chinstrap", 2: "Gentoo"})
 
-df_prediction_probability
-
 # Display predicted species
 st.subheader("Predicted Species")
+df_prediction_probability
 penguin_species = np.array(["Adelie", "Chinstrap", "Gentoo"])
 st.success(penguin_species[prediction][0])
