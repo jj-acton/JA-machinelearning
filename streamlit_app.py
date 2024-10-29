@@ -1,5 +1,6 @@
 import streamlit as st
-import pandas as pd 
+import pandas as pd
+from sklearn.ensemble import RandomForestClassifier
 
 st.title('⚙️ Machine Learning Penguin App')
 
@@ -74,4 +75,6 @@ with st.expander("Data preparation"):
   st.write("**Encoded y**")
   y
   
-is this working
+# Training the model
+
+clf = RandomForestClassifier
