@@ -98,7 +98,7 @@ st.dataframe(df_prediction_probability,
         "Adelie": st.column_config.ProgressColumn(
             "Adelie",
             format="%f",
-            width = "medium"
+            width = "medium",
             min_value=0,
             max_value=1,
         ),
