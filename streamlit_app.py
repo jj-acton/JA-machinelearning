@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import numpy as np
 from sklearn.ensemble import RandomForestClassifier
 
 st.title('⚙️ Machine Learning Penguin App')
@@ -87,6 +88,12 @@ prediction = clf.predict(input_row)
 prediction_probability = clf.predict_proba(input_row)
 
 df_prediction_probability = pd.DataFrame(prediction_probability)
+df_prediction_probability.columns = ["Adelie", "Chinstrap", "Gentoo"]
 df_prediction_probability.rename(columns={0: "Adelie", 1: "Chinstrap", 2: "Gentoo"})
 
 df_prediction_probability
+
+# Display predicted species
+st.subheader("Predicted Species")
+penguin_species = np.array(["Adelie", "Chinstrap", "Gentoo"])
+st.success(penguin_species[prediction][0])
