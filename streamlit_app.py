@@ -98,6 +98,21 @@ penguin_species = np.array(["Adelie", "Chinstrap", "Gentoo"])
 st.success(penguin_species[prediction][0])
 
 # Display Progress Column
+data_df = pd.DataFrame(
+    {
+        "Penguin_probability": df_prediction_probability ,
+    }
+)
 
-
-st.ProgressColumn("Penguin Probability", max_value = 1)
+st.data_editor(
+    data_df,
+    column_config={
+        "Penguin_probability": st.column_config.ProgressColumn(
+            "PP",
+            help="The probaility of each penguin",
+            min_value=0,
+            max_value=1,
+        ),
+    },
+    hide_index=True,
+)
