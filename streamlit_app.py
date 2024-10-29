@@ -55,12 +55,14 @@ with st.expander("Input features"):
   input_penguins
   
 #Data prep
-#Encode X-axis
+#Encode X
 encode = ["island", "sex"]
 df_penguins = pd.get_dummies(input_penguins, prefix=encode)
+
+x = df_penguins[1:]
 input_row = df_penguins[:1]
 
-#Encode Y-axis
+#Encode Y
 target_mapper = {"Adelie": 0, "Chinstrap": 1, "Gentoo": 2}
 
 def target_encode(val):
@@ -78,7 +80,7 @@ with st.expander("Data preparation"):
 # Training the model
 
 clf = RandomForestClassifier()
-clf.fit(x_raw, y)
+clf.fit(x, y)
 
 # Apply model
 prediction = clf.predict(input_row)
