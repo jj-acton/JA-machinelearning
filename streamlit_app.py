@@ -100,7 +100,7 @@ st.success(penguin_species[prediction][0])
 # Display Progress Column
 data_df = pd.DataFrame(
     {
-        "Penguin_probability": df_prediction_probability ,
+        "Penguin_probability": df_prediction_probability[0,1,2] ,
     }
 )
 
