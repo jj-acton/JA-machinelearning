@@ -72,7 +72,7 @@ y = y_raw.apply(target_encode)
   
 
 with st.expander("Data preparation"):
-  st.write("**Encoded X (input penguin)**")
+  st.write("**Encoded x (input penguin)**")
   input_row
   st.write("**Encoded y**")
   y
@@ -85,3 +85,5 @@ clf.fit(x, y)
 # Apply model
 prediction = clf.predict(input_row)
 prediction_probability = clf.predict_proba(input_row)
+
+prediction_probability
