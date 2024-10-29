@@ -99,5 +99,5 @@ st.success(penguin_species[prediction][0])
 
 # Display Progress Column
 
-st.data_editor(input_row,
+st.data_editor(df_prediction_probability,
               column_config = {"Probability": st.column_config.ProgressColumn("Penguin Probability", max_value = 1)})
