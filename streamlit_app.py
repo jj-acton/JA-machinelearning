@@ -100,4 +100,4 @@ st.success(penguin_species[prediction][0])
 # Display Progress Column
 
 
-st.coulum_config.ProgressColumn("Penguin Probability", max_value = 1)
+st.ProgressColumn("Penguin Probability", max_value = 1)
