@@ -93,26 +93,22 @@ df_prediction_probability.rename(columns={0: "Adelie", 1: "Chinstrap", 2: "Gento
 
 # Display predicted species
 st.subheader("Predicted Species")
-df_prediction_probability
-penguin_species = np.array(["Adelie", "Chinstrap", "Gentoo"])
-st.success(penguin_species[prediction][0])
-
-# Display Progress Column
-data_df = pd.DataFrame(
-    {
-        "Penguin_probability": df_prediction_probability[0,1,2] ,
-    }
-)
-
-st.data_editor(
-    data_df,
-    column_config={
-        "Penguin_probability": st.column_config.ProgressColumn(
-            "PP",
-            help="The probaility of each penguin",
+st.dataframe(df_prediction_probability,
+        column_config={
+        "Adelie": st.column_config.ProgressColumn(
+            "Adelie",
+            format="%f",
+            width = "medium"
             min_value=0,
             max_value=1,
         ),
     },
     hide_index=True,
 )
+
+
+
+penguin_species = np.array(["Adelie", "Chinstrap", "Gentoo"])
+st.success(penguin_species[prediction][0])
+
+# Display Progress Column
