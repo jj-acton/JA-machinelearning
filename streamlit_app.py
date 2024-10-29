@@ -115,6 +115,7 @@ st.dataframe(df_prediction_probability,
             width = "medium",
             min_value=0,
             max_value=1,
+        ),
         },
 )
 
