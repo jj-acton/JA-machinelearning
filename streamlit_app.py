@@ -116,7 +116,8 @@ st.dataframe(df_prediction_probability,
             min_value=0,
             max_value=1,
         ),
-        },
+        }, 
+        hide_index = True
 )
 
 
